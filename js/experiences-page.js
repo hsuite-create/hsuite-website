@@ -13,10 +13,6 @@
  *     - .exp-reveal 클래스가 붙은 요소가 화면에 들어오면 서서히 떠오르며 나타납니다.
  *     - IntersectionObserver를 사용해서, 스크롤 이벤트를 직접 계산하지 않고
  *       가볍게 처리했습니다.
- *
- *  3) 서브 내비게이션 활성 표시
- *     - 상단에 sticky로 붙어있는 얇은 메뉴(.exp-subnav)에서, 현재 보고 있는
- *       섹션의 링크에 .active를 붙여 위치를 알려줍니다.
  */
 
 const ExperiencesPageComponent = {
@@ -24,7 +20,6 @@ const ExperiencesPageComponent = {
     this.renderOutdoorLinks();
     this.bindScrollTriggers();
     this.setupRevealAnimation();
-    this.setupSubnavHighlight();
   },
 
   /** OUTDOOR 섹션의 링크 목록을 config/site.config.js 값으로 채워 넣습니다 */
@@ -33,15 +28,19 @@ const ExperiencesPageComponent = {
     if (!list || !window.SITE_CONFIG) return;
 
     list.innerHTML = SITE_CONFIG.experiencesPage.outdoorLinks
-      .map(
-        (link) => `
+      .map((link) => {
+        // 외부 링크는 새 탭으로, 우리 사이트 내부 페이지는 같은 탭에서 이동합니다
+        const targetAttrs = link.external
+          ? `target="_blank" rel="noopener noreferrer"`
+          : "";
+        return `
         <li>
-          <a href="${link.url}" target="_blank" rel="noopener noreferrer">
+          <a href="${link.url}" ${targetAttrs}>
             ${link.name}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
           </a>
-        </li>`
-      )
+        </li>`;
+      })
       .join("");
   },
 
@@ -76,31 +75,6 @@ const ExperiencesPageComponent = {
     );
 
     targets.forEach((el) => observer.observe(el));
-  },
-
-  /** 현재 스크롤 위치에 맞춰 서브 내비게이션의 활성 링크를 갱신합니다 */
-  setupSubnavHighlight() {
-    const links = document.querySelectorAll(".exp-subnav a");
-    if (!links.length) return;
-
-    const sections = Array.from(links)
-      .map((link) => document.querySelector(link.getAttribute("href")))
-      .filter(Boolean);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const id = `#${entry.target.id}`;
-          links.forEach((link) => {
-            link.classList.toggle("active", link.getAttribute("href") === id);
-          });
-        });
-      },
-      { rootMargin: "-45% 0px -45% 0px" } // 화면 중앙 부근에 들어온 섹션을 "현재 섹션"으로 판단
-    );
-
-    sections.forEach((section) => observer.observe(section));
   },
 };
 
