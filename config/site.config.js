@@ -84,12 +84,35 @@ const SITE_CONFIG = {
 
   // ── Experiences 페이지 전용 값 ────────────────────
   // experiences.html 하단 OUTDOOR 섹션의 링크 목록입니다.
-  // 실제 예약/제휴 링크가 정해지면 url 값만 채워 넣으면 됩니다.
+  // external:true → 새 탭에서 외부 사이트로 이동
+  // external:false → 우리 사이트 안의 페이지로 이동 (같은 탭)
   experiencesPage: {
     outdoorLinks: [
-      { name: "서울투어버스 예약", url: "#" },
-      { name: "근처 맛집 리스트", url: "#" },
-      { name: "동대문 쇼핑 리스트", url: "#" },
+      { name: "서울투어버스 예약", url: "#", external: true },
+      { name: "근처 맛집 리스트", url: "restaurants.html", external: false },
+      { name: "동대문 쇼핑 리스트", url: "shopping.html", external: false },
+    ],
+  },
+
+  // ── restaurants.html (Outdoor에서만 연결되는 맛집 리스트 페이지) ──
+  restaurantsPage: {
+    title: "근처 맛집 리스트",
+    intro: "H Suite 도보권 안에서 즐길 수 있는 동대문 근처 맛집을 소개합니다.",
+    items: [
+      { name: "맛집 이름 1", description: "간단한 소개 문구가 들어갑니다.", url: "#" },
+      { name: "맛집 이름 2", description: "간단한 소개 문구가 들어갑니다.", url: "#" },
+      { name: "맛집 이름 3", description: "간단한 소개 문구가 들어갑니다.", url: "#" },
+    ],
+  },
+
+  // ── shopping.html (Outdoor에서만 연결되는 쇼핑 리스트 페이지) ──
+  shoppingPage: {
+    title: "동대문 쇼핑 리스트",
+    intro: "동대문 일대에서 가볼 만한 쇼핑 스팟을 소개합니다.",
+    items: [
+      { name: "쇼핑 스팟 1", description: "간단한 소개 문구가 들어갑니다.", url: "#" },
+      { name: "쇼핑 스팟 2", description: "간단한 소개 문구가 들어갑니다.", url: "#" },
+      { name: "쇼핑 스팟 3", description: "간단한 소개 문구가 들어갑니다.", url: "#" },
     ],
   },
 
