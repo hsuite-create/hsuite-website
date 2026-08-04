@@ -81,4 +81,35 @@ const SITE_CONFIG = {
       { name: "Yeogi Eottae", url: "https://www.yeogi.com" },
     ],
   },
+
+  // ── Experiences 페이지 전용 값 ────────────────────
+  // experiences.html 하단 OUTDOOR 섹션의 링크 목록입니다.
+  // 실제 예약/제휴 링크가 정해지면 url 값만 채워 넣으면 됩니다.
+  experiencesPage: {
+    outdoorLinks: [
+      { name: "서울투어버스 예약", url: "#" },
+      { name: "근처 맛집 리스트", url: "#" },
+      { name: "동대문 쇼핑 리스트", url: "#" },
+    ],
+  },
+
+  // ── reservation.html(예약 소개 페이지) 전용 값 ─────────
+  // 아직 실제 사진이 준비되지 않아, 경로를 채워 넣기 전까지는
+  // 기본 placeholder 배경색으로 보입니다. 사진이 준비되면 아래 각 항목에
+  // 파일 경로만 적어 넣으면 자동으로 배경 사진으로 반영됩니다.
+  reservationImages: {
+    hero: "",          // INDOOR/OUTDOOR 상단 배너
+    gallery: "",       // "어울리고 있는 사람들" 섹션
+    hongindoor: "",    // 홍인지문 뷰 상세 섹션
+    welcomeTea: "",    // 웰컴티 상세 섹션
+    rooftop: "",       // 루프탑 상세 섹션
+  },
+
+  // OUTDOOR 섹션의 외부 링크 목록. url을 실제 예약/리스트 페이지 주소로
+  // 교체하면 됩니다(지금은 임시로 "#"이 들어가 있습니다).
+  reservationOutdoorLinks: [
+    { name: "서울투어버스 예약", url: "#" },
+    { name: "근처 맛집 리스트", url: "#" },
+    { name: "동대문 쇼핑 리스트", url: "#" },
+  ],
 };
