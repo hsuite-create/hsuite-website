@@ -32,21 +32,23 @@
   scroll-margin-top:100px;
 }
 .exp-toggle{
-  display:flex; align-items:center; justify-content:center; gap:20px;
+  display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
   margin-bottom:56px;
 }
 .exp-toggle-btn{
-  font-family:var(--font-en-main); font-size:13px; letter-spacing:.18em;
-  color:var(--ink); padding:6px 4px; position:relative;
+  font-family:var(--font-en-main); font-size:22px; letter-spacing:.12em;
+  color:var(--ink); padding:10px 4px; position:relative;
   transition:color .3s var(--ease);
 }
+.exp-toggle-btn:first-child{ justify-self:center; }
+.exp-toggle-btn:last-child{ justify-self:center; }
 .exp-toggle-btn::after{
-  content:''; position:absolute; left:0; bottom:0; width:0; height:1px;
+  content:''; position:absolute; left:0; bottom:0; width:0; height:2px;
   background:var(--accent-mint); transition:width .3s var(--ease);
 }
 .exp-toggle-btn:hover{ color:var(--sea-deep); }
 .exp-toggle-btn:hover::after{ width:100%; }
-.exp-toggle-divider{ color:rgba(57,49,32,.3); }
+.exp-toggle-divider{ color:rgba(57,49,32,.3); font-size:18px; padding:0 24px; }
 
 .exp-intro-body{
   max-width:640px; margin:0 0 0 auto; text-align:right;
@@ -145,21 +147,10 @@
   opacity:1; transform:translateY(0);
 }
 
-/* ── 페이지 안에서만 쓰는 얇은 서브 내비게이션 ── */
-.exp-subnav{
-  position:sticky; top:0; z-index:80;
-  display:flex; gap:28px; justify-content:center; flex-wrap:wrap;
-  padding:16px 24px; background:rgba(255,250,240,0.92); backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);
-}
-.exp-subnav a{
-  font-family:var(--font-en-main); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
-  color:rgba(57,49,32,.55); transition:color .25s var(--ease);
-}
-.exp-subnav a.active, .exp-subnav a:hover{ color:var(--ink); }
-
 /* ===== 모바일(920px 이하) ===== */
 @media (max-width:920px){
+  .exp-toggle-btn{ font-size:17px; letter-spacing:.08em; }
+  .exp-toggle-divider{ padding:0 14px; }
   .exp-page{ padding-top:90px; }
   .exp-intro{ padding:0 24px 48px; }
   .exp-intro-body{ text-align:left; margin:0; }
@@ -171,5 +162,4 @@
   .exp-detail.reverse .exp-detail-text{ order:0; }
   .exp-outdoor{ margin:40px 16px 70px; padding:36px 24px; }
   .exp-outdoor-list{ text-align:left; }
-  .exp-subnav{ gap:16px; overflow-x:auto; justify-content:flex-start; }
 }
