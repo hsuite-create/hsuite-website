@@ -1,0 +1,56 @@
+/*
+  hero.css
+  ------------------------------------------------------------
+  전체 화면 히어로: 슬라이드 사진 배경(js/hero.js가 SITE_CONFIG.heroImages로
+  DOM을 채워줌) + 좌하단 텍스트.
+*/
+
+.hero{
+  position:relative; height:100vh; min-height:640px; overflow:hidden;
+  display:flex; align-items:flex-end; justify-content:flex-start;
+  background:var(--ink); /* 이미지가 로딩되기 전 잠깐 보이는 배경색 */
+}
+
+/* hero.js가 이 컨테이너 안에 .hero-slide div를 이미지 개수만큼 생성합니다 */
+.hero-slides{ position:absolute; inset:0; overflow:hidden; }
+.hero-slide{
+  position:absolute; inset:-4%; background-size:cover; background-position:center;
+  opacity:0; animation:heroFade 18s ease-in-out infinite, heroZoom 18s ease-in-out infinite;
+}
+/* 슬라이드 두 장이 번갈아 크로스페이드 되도록 딜레이를 절반씩 어긋나게 줌 */
+.hero-slide:nth-child(1){ animation-delay:0s, 0s; }
+.hero-slide:nth-child(2){ animation-delay:-9s, -9s; }
+@keyframes heroFade{
+  0%{ opacity:0; } 8%{ opacity:1; } 42%{ opacity:1; } 50%{ opacity:0; } 100%{ opacity:0; }
+}
+@keyframes heroZoom{
+  0%{ transform:scale(1); } 100%{ transform:scale(1.1); }
+}
+
+/* 사진 위에 깔아서 좌하단 텍스트 가독성을 확보하는 그라디언트 */
+.hero-scrim{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(57,49,32,.28) 0%, rgba(57,49,32,.05) 30%, rgba(57,49,32,.05) 55%, rgba(57,49,32,.6) 100%);
+}
+
+.hero-content{
+  position:relative; z-index:2; text-align:left; color:var(--foam);
+  padding:0 48px 64px; max-width:640px;
+}
+.hero-content .eyebrow{color:var(--accent-mint); display:block; margin-bottom:22px;}
+
+/* 헤드라인은 영문 서브 폰트(Libre Baskerville)를 씁니다 */
+.hero-content h1{
+  font-family:var(--font-en-sub);
+  font-size:clamp(34px, 5.4vw, 68px); font-weight:400; line-height:1.14;
+  letter-spacing:-.01em; margin-bottom:22px;
+  text-shadow:0 2px 30px rgba(0,0,0,.15);
+}
+.hero-content p.sub{
+  font-size:clamp(15px, 1.6vw, 19px); font-weight:300; color:rgba(255,250,240,0.88);
+  max-width:480px; margin:0; letter-spacing:.01em;
+}
+
+@media (max-width:640px){
+  .hero-content{ padding:0 24px 48px; }
+}

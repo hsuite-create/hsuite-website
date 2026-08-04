@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hsuite — Quiet Tide Hotel</title>
+
+<!-- 폰트: 한국어 KoPub 돋음 / 영문 서브 Libre Baskerville / 영문 메인 Haboro Contrast(Adobe Fonts) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css">
+<link rel="stylesheet" href="https://use.typekit.net/kpk5ofh.css">
+
+<!-- 컴포넌트별로 나눈 CSS. base.css를 가장 먼저 불러와야 CSS 변수가 정의됩니다 -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/experiences.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/side-dock.css">
+<link rel="stylesheet" href="css/booking-panel.css">
+</head>
+<body>
+
+<!-- 배너 카드 그레인 텍스처에서 재사용하는 SVG 필터 -->
+<svg class="defs"><defs>
+  <filter id="grainFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+</defs></svg>
+
+<!-- ============ HEADER 컴포넌트 (css/header.css, js/header.js) ============ -->
+<header id="siteHeader">
+  <a href="#" class="logo">
+    <img class="logo-img logo-light" src="assets/logo-white.png" alt="H Suite">
+    <img class="logo-img logo-dark" src="assets/logo-ink.png" alt="H Suite">
+  </a>
+
+  <nav class="main-nav" id="mainNav">
+    <a href="#rooms">Rooms</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="#brand">Brand</a>
+  </nav>
+
+  <div class="head-actions">
+    <a href="#" class="login">Login</a>
+    <a href="#" class="btn-book js-book-trigger">Book</a>
+    <button class="burger" id="burgerBtn" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO 컴포넌트 (css/hero.css, js/hero.js) ============ -->
+<!-- .hero-slides 안의 사진 슬라이드는 js/hero.js가 config/site.config.js의
+     heroImages 배열을 읽어서 자동으로 채워 넣습니다. -->
+<section class="hero">
+  <div class="hero-slides" id="heroSlides"></div>
+  <div class="hero-scrim"></div>
+
+  <div class="hero-content">
+    <span class="eyebrow">H SUITE DONGDAEMUN BRANCH</span>
+    <h1 class="serif">Together, Deeply</h1>
+    <p class="sub">함께 그리고 또 깊게 머무는 경험을 제공합니다.</p>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCES 컴포넌트 (css/experiences.css) ============ -->
+<div class="section-intro">
+  <span class="eyebrow">SIGNATURE MOMENTS</span>
+  <h2 class="serif">머무는 동안, 감각이 열리는 세 가지 순간</h2>
+</div>
+
+<section class="experience-grid" id="experiences">
+  <div class="exp-card">
+    <div class="exp-visual">
+      <div class="photo photo-sail"></div>
+      <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainFilter)"/></svg>
+      <div class="vignette"></div>
+    </div>
+    <h3 class="serif">오션 스위트</h3>
+    <p>파도가 닿는 창가에서 눈을 뜨는 아침, 수평선이 가장 먼저 건네는 인사. 조수의 결을 따라 놓인 침구와 낮은 조도의 조명이 하루의 속도를 늦춰줍니다.</p>
+    <span class="arrow">객실 살펴보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+  </div>
+
+  <div class="exp-card">
+    <div class="exp-visual">
+      <div class="photo photo-cuisine"></div>
+      <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainFilter)"/></svg>
+      <div class="vignette"></div>
+    </div>
+    <h3 class="serif">하버 테이블</h3>
+    <p>항구에서 새벽에 닿은 재료로 차리는 계절의 한 끼. 지역 어부와 농가에서 직접 받아온 식재료로, 매일 조금씩 다른 이야기를 접시에 담습니다.</p>
+    <span class="arrow">다이닝 살펴보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+  </div>
+
+  <div class="exp-card">
+    <div class="exp-visual">
+      <div class="photo photo-terrace"></div>
+      <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainFilter)"/></svg>
+      <div class="vignette"></div>
+    </div>
+    <h3 class="serif">타이드 테라스</h3>
+    <p>지붕 위로 트인 마을의 풍경과 함께하는 시간. 정해진 일정 없이, 그날의 바람과 빛이 이끄는 대로 머무는 것이 이 공간의 유일한 규칙입니다.</p>
+    <a class="arrow" href="experiences.html">경험 살펴보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+  </div>
+</section>
+
+<!-- ============ FOOTER 컴포넌트 (css/footer.css, js/footer.js) ============ -->
+<!-- 이메일/전화번호/SNS 링크/연도는 js/footer.js가 config 값으로 채워 넣습니다 -->
+<footer id="rooms">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo footer-logo">
+        <img class="logo-img" src="assets/logo-white.png" alt="H Suite">
+      </a>
+      <p>주식회사 Hsuite 호텔앤리조트 · 대표 김수현<br>
+      서울특별시 강남구 해안로 128, 7층<br>
+      사업자등록번호 214-88-00921 · 통신판매업 제2024-서울강남-1029호</p>
+    </div>
+
+    <div class="footer-col" id="brand">
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="#" class="js-book-trigger">Book</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="experiences.html">Experiences</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Privacy policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col footer-contact">
+      <h4>Contact</h4>
+      <p id="footerEmail">-</p>
+      <p id="footerPhone">-</p>
+      <div class="sns-row">
+        <a id="dockInstagramFooter" href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+        </a>
+        <a id="dockWhatsappFooter" href="#" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M20.5 11.9c0 4.7-3.8 8.5-8.5 8.5-1.5 0-2.9-.4-4.1-1.1L3.5 20.5l1.2-4.3a8.4 8.4 0 0 1-1.2-4.3c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5Z"/><path d="M8.5 8.7c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .6.4.2.5.7 1.6.7 1.7.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.2-.3.3-.4.5-.1.1-.3.3-.1.6.2.4.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.2.1.4.1.5-.1.2-.2.6-.7.8-1 .2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.3.1.2.1 1-.2 1.5-.4.6-1.5 1.1-2.2 1.1-.6 0-2.1-.2-4.2-2.1C9.6 14.2 8.6 12 8.4 11.6c-.1-.3-.7-1.1-.7-2.1 0-.4.1-.6.2-.8Z" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© <span id="footerYear">2026</span> Hsuite Hotel &amp; Resort. All rights reserved.</span>
+    <span>Designed for a quieter tide.</span>
+  </div>
+</footer>
+
+<!-- ============ SIDE DOCK 컴포넌트 (css/side-dock.css, js/side-dock.js) ============ -->
+<div class="side-dock" id="sideDock">
+  <a href="#" class="book-dock js-book-trigger">
+    <span class="tip">Book Now</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+  </a>
+  <a id="dockInstagram" href="#" aria-label="Instagram">
+    <span class="tip">Instagram</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+  </a>
+  <a id="dockWhatsapp" href="#" aria-label="WhatsApp">
+    <span class="tip">WhatsApp</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M20.5 11.9c0 4.7-3.8 8.5-8.5 8.5-1.5 0-2.9-.4-4.1-1.1L3.5 20.5l1.2-4.3a8.4 8.4 0 0 1-1.2-4.3c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5Z"/></svg>
+  </a>
+  <button id="toTop" aria-label="맨 위로">
+    <span class="tip">Top</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+</div>
+
+<!-- ============ BOOKING PANEL 컴포넌트 (css/booking-panel.css, js/booking-panel.js) ============ -->
+<!-- 파트너 목록(#partnerMainList, #partnerOther 안쪽)은 js/booking-panel.js가
+     config/site.config.js의 bookingPartners 값으로 채워 넣습니다. -->
+<div class="booking-overlay" id="bookingOverlay"></div>
+<aside class="booking-panel" id="bookingPanel" aria-hidden="true">
+  <div class="sheet-handle"></div>
+  <div class="booking-panel-head">
+    <span class="eyebrow">예약하기</span>
+    <button class="booking-close" id="bookingClose" aria-label="닫기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <div class="booking-scroll">
+    <div class="booking-intro">
+      <h2 class="booking-title">Book your stay</h2>
+      <p class="booking-sub-en">Choose your preferred booking partner.</p>
+      <p class="booking-sub-kr">편리한 예약 채널을 선택해 주세요.</p>
+    </div>
+
+    <div class="partner-label">Global Booking Partners</div>
+    <div class="partner-list" id="partnerMainList"><!-- js/booking-panel.js가 채웁니다 --></div>
+
+    <button class="partner-toggle" id="partnerToggle" aria-expanded="false">
+      <span>Other Booking Options</span>
+      <svg class="toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+    <div class="partner-other-grid" id="partnerOther"><!-- js/booking-panel.js가 채웁니다 --></div>
+  </div>
+
+  <div class="booking-footer">
+    <p class="footer-note">Rates and cancellation policies may vary by platform.<br>Reservations and payments are completed on the selected partner's website.</p>
+    <div class="footer-help">
+      <span>Need help with your reservation?</span>
+      <a id="footerEmailLink" href="#">Contact us</a>
+    </div>
+  </div>
+</aside>
+
+<button class="confirm-stay" id="confirmStay">
+  머무실 준비가 되셨다면
+  <span>Confirm your stay</span>
+</button>
+
+<!-- ============ 설정 파일: 반드시 컴포넌트 스크립트보다 먼저 로드 ============ -->
+<script src="config/site.config.js"></script>
+
+<!-- ============ 컴포넌트 스크립트 ============ -->
+<script src="js/hero.js"></script>
+<script src="js/header.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/side-dock.js"></script>
+<script src="js/booking-panel.js"></script>
+
+<!-- ============ 진입점: 위 컴포넌트들의 init()을 호출 ============ -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
