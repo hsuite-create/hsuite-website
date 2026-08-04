@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hsuite — Quiet Tide Hotel</title>
+<title>Experiences — Hsuite</title>
 
 <!-- 폰트: 한국어 KoPub 돋음 / 영문 서브 Libre Baskerville / 영문 메인 Haboro Contrast(Adobe Fonts) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,33 +12,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css">
 <link rel="stylesheet" href="https://use.typekit.net/kpk5ofh.css">
 
-<!-- 컴포넌트별로 나눈 CSS. base.css를 가장 먼저 불러와야 CSS 변수가 정의됩니다 -->
+<!-- 공통 컴포넌트 CSS (index.html과 동일하게 재사용) -->
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/header.css">
-<link rel="stylesheet" href="css/hero.css">
-<link rel="stylesheet" href="css/experiences.css">
 <link rel="stylesheet" href="css/footer.css">
 <link rel="stylesheet" href="css/side-dock.css">
 <link rel="stylesheet" href="css/booking-panel.css">
+
+<!-- 이 페이지 전용 CSS -->
+<link rel="stylesheet" href="css/experiences-page.css">
 </head>
 <body>
 
-<!-- 배너 카드 그레인 텍스처에서 재사용하는 SVG 필터 -->
-<svg class="defs"><defs>
-  <filter id="grainFilter"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
-</defs></svg>
-
-<!-- ============ HEADER 컴포넌트 (css/header.css, js/header.js) ============ -->
+<!-- ============ HEADER 컴포넌트 (index.html과 동일) ============ -->
 <header id="siteHeader">
-  <a href="#" class="logo">
+  <a href="index.html" class="logo">
     <img class="logo-img logo-light" src="assets/logo-white.png" alt="H Suite">
     <img class="logo-img logo-dark" src="assets/logo-ink.png" alt="H Suite">
   </a>
 
   <nav class="main-nav" id="mainNav">
-    <a href="#rooms">Rooms</a>
+    <a href="index.html#rooms">Rooms</a>
     <a href="experiences.html">Experiences</a>
-    <a href="#brand">Brand</a>
+    <a href="index.html#brand">Brand</a>
   </nav>
 
   <div class="head-actions">
@@ -48,67 +44,103 @@
   </div>
 </header>
 
-<!-- ============ HERO 컴포넌트 (css/hero.css, js/hero.js) ============ -->
-<!-- .hero-slides 안의 사진 슬라이드는 js/hero.js가 config/site.config.js의
-     heroImages 배열을 읽어서 자동으로 채워 넣습니다. -->
-<section class="hero">
-  <div class="hero-slides" id="heroSlides"></div>
-  <div class="hero-scrim"></div>
+<main class="exp-page">
 
-  <div class="hero-content">
-    <span class="eyebrow">H SUITE DONGDAEMUN BRANCH</span>
-    <h1 class="serif">Together, Deeply</h1>
-    <p class="sub">함께 그리고 또 깊게 머무는 경험을 제공합니다.</p>
-  </div>
-</section>
+  <!-- 이 페이지 안에서 원하는 섹션으로 바로 이동할 수 있는 얇은 서브 메뉴 -->
+  <nav class="exp-subnav">
+    <a href="#exp-intro">Intro</a>
+    <a href="#exp-people">Gallery</a>
+    <a href="#indoor-section">Indoor</a>
+    <a href="#room-view">홍인지문 뷰</a>
+    <a href="#welcome-tea">웰컴티</a>
+    <a href="#rooftop">루프탑</a>
+    <a href="#outdoor-section">Outdoor</a>
+  </nav>
 
-<!-- ============ EXPERIENCES 컴포넌트 (css/experiences.css) ============ -->
-<div class="section-intro">
-  <span class="eyebrow">SIGNATURE MOMENTS</span>
-  <h2 class="serif">머무는 동안, 감각이 열리는 세 가지 순간</h2>
-</div>
-
-<section class="experience-grid" id="experiences">
-  <div class="exp-card">
-    <div class="exp-visual">
-      <div class="photo photo-sail"></div>
-      <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainFilter)"/></svg>
-      <div class="vignette"></div>
+  <!-- ============ 1. 인트로: INDOOR/OUTDOOR 토글 + 헤드라인 ============ -->
+  <section class="exp-intro" id="exp-intro">
+    <div class="exp-toggle">
+      <button class="exp-toggle-btn" data-scroll-to="#indoor-section">INDOOR</button>
+      <span class="exp-toggle-divider">|</span>
+      <button class="exp-toggle-btn" data-scroll-to="#outdoor-section">OUTDOOR</button>
     </div>
-    <h3 class="serif">오션 스위트</h3>
-    <p>파도가 닿는 창가에서 눈을 뜨는 아침, 수평선이 가장 먼저 건네는 인사. 조수의 결을 따라 놓인 침구와 낮은 조도의 조명이 하루의 속도를 늦춰줍니다.</p>
-    <span class="arrow">객실 살펴보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-  </div>
 
-  <div class="exp-card">
-    <div class="exp-visual">
-      <div class="photo photo-cuisine"></div>
-      <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainFilter)"/></svg>
-      <div class="vignette"></div>
+    <div class="exp-intro-body exp-reveal">
+      <h1 class="serif">머무는 것만으로도<br>이어지는 경험</h1>
+      <p>H Suite의 경험은 멀리 이동하지 않아도 시작됩니다. 창밖으로 이어지는 지역의 풍경, 여행의 첫 순간을 열어주는 웰컴티, 함께 시간을 나눌 수 있는 루프탑까지, 머무는 동안 꼭 필요한 장면만을 신중하게 담았습니다.</p>
+      <p>H Suite에서의 여행은 바쁘게 스쳐가는 일정이 아니라, 한 곳에 머물며 깊어지는 시간에 가깝습니다.</p>
     </div>
-    <h3 class="serif">하버 테이블</h3>
-    <p>항구에서 새벽에 닿은 재료로 차리는 계절의 한 끼. 지역 어부와 농가에서 직접 받아온 식재료로, 매일 조금씩 다른 이야기를 접시에 담습니다.</p>
-    <span class="arrow">다이닝 살펴보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-  </div>
 
-  <div class="exp-card">
-    <div class="exp-visual">
-      <div class="photo photo-terrace"></div>
-      <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainFilter)"/></svg>
-      <div class="vignette"></div>
+    <!-- 홍인지문 객실 뷰가 낮에서 밤으로 바뀌는 영상이 들어갈 자리 -->
+    <div class="exp-media exp-intro-media exp-reveal">
+      <span>홍인지문 객실 뷰 낮-밤 영상</span>
     </div>
-    <h3 class="serif">타이드 테라스</h3>
-    <p>지붕 위로 트인 마을의 풍경과 함께하는 시간. 정해진 일정 없이, 그날의 바람과 빛이 이끄는 대로 머무는 것이 이 공간의 유일한 규칙입니다.</p>
-    <a class="arrow" href="experiences.html">경험 살펴보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-  </div>
-</section>
+  </section>
 
-<!-- ============ FOOTER 컴포넌트 (css/footer.css, js/footer.js) ============ -->
-<!-- 이메일/전화번호/SNS 링크/연도는 js/footer.js가 config 값으로 채워 넣습니다 -->
-<footer id="rooms">
+  <!-- ============ 2. 라이프스타일 이미지 배너 ============ -->
+  <section class="exp-media exp-people exp-reveal" id="exp-people">
+    <span>어울리고 있는 사람들</span>
+  </section>
+
+  <!-- ============ 3. INDOOR 3분할 그리드 ============ -->
+  <section class="exp-indoor" id="indoor-section">
+    <div class="exp-section-label exp-reveal">INDOOR</div>
+    <div class="exp-indoor-grid">
+      <div class="exp-media exp-reveal" data-scroll-to="#room-view">
+        <span>홍인지문 뷰</span>
+      </div>
+      <div class="exp-media exp-reveal" data-scroll-to="#welcome-tea">
+        <span>웰컴티</span>
+      </div>
+      <div class="exp-media exp-reveal" data-scroll-to="#rooftop">
+        <span>루프탑</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. 홍인지문 뷰 상세 ============ -->
+  <section class="exp-detail" id="room-view">
+    <div class="exp-media exp-reveal"><span>홍인지문 뷰</span></div>
+    <div class="exp-detail-text exp-reveal">
+      <h3 class="serif">창밖으로 이어지는 서울의 시간</h3>
+      <p>창밖의 홍인지문은 H Suite가 머무는 지역의 시간을 보여줍니다. 오래된 풍경과 낮으로 스며들고, 여행의 순간은 조금 더 길어집니다.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5. 웰컴티 상세 ============ -->
+  <section class="exp-detail" id="welcome-tea">
+    <div class="exp-media exp-reveal"><span>웰컴티</span></div>
+    <div class="exp-detail-text exp-reveal">
+      <h3 class="serif">하동의 가족적인 온기를 담은 웰컴티</h3>
+      <p>H Suite는 웰컴티로 따뜻한 색깔을 준비합니다. 한국 전통 발효 찻잎에서 이어진 깊은 향이 여행자의 방문을 반겨주며, 함께 담아 차를 나누는 짧은 시간, 그 작은 장면에서 H Suite의 머무름은 시작됩니다.</p>
+    </div>
+  </section>
+
+  <!-- ============ 6. 루프탑 상세 (이미지가 오른쪽에 오도록 reverse) ============ -->
+  <section class="exp-detail reverse" id="rooftop">
+    <div class="exp-detail-text exp-reveal">
+      <h3 class="serif">함께하는 시간이 조금 더 넓어지는 곳</h3>
+      <p>H Suite의 루프탑은 여행의 정형화되지 않은 균형을 담았습니다. 낮에는 도시의 윤곽을 바라보고, 저녁에는 함께 온 사람들과 이야기를 나누는 시간이 됩니다. 가볍게 걸어 이야기를 나누고, 서로를 느끼는 것으로도 머무는 시간은 충분히 특별해집니다.</p>
+    </div>
+    <div class="exp-media exp-reveal"><span>루프탑</span></div>
+  </section>
+
+  <!-- ============ 7. OUTDOOR 링크 리스트 ============ -->
+  <!-- 링크는 config/site.config.js 의 experiencesPage.outdoorLinks 에서 관리합니다 -->
+  <section class="exp-outdoor exp-reveal" id="outdoor-section">
+    <div class="exp-section-label">OUTDOOR</div>
+    <ul class="exp-outdoor-list" id="outdoorLinkList">
+      <!-- js/experiences-page.js가 config 값으로 채워 넣습니다 -->
+    </ul>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER 컴포넌트 (index.html과 동일) ============ -->
+<footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#" class="logo footer-logo">
+      <a href="index.html" class="logo footer-logo">
         <img class="logo-img" src="assets/logo-white.png" alt="H Suite">
       </a>
       <p>주식회사 Hsuite 호텔앤리조트 · 대표 김수현<br>
@@ -116,11 +148,11 @@
       사업자등록번호 214-88-00921 · 통신판매업 제2024-서울강남-1029호</p>
     </div>
 
-    <div class="footer-col" id="brand">
+    <div class="footer-col">
       <h4>Menu</h4>
       <ul>
         <li><a href="#" class="js-book-trigger">Book</a></li>
-        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="index.html#rooms">Rooms</a></li>
         <li><a href="experiences.html">Experiences</a></li>
         <li><a href="#">About us</a></li>
         <li><a href="#">Privacy policy</a></li>
@@ -148,7 +180,7 @@
   </div>
 </footer>
 
-<!-- ============ SIDE DOCK 컴포넌트 (css/side-dock.css, js/side-dock.js) ============ -->
+<!-- ============ SIDE DOCK 컴포넌트 (index.html과 동일) ============ -->
 <div class="side-dock" id="sideDock">
   <a href="#" class="book-dock js-book-trigger">
     <span class="tip">Book Now</span>
@@ -168,9 +200,7 @@
   </button>
 </div>
 
-<!-- ============ BOOKING PANEL 컴포넌트 (css/booking-panel.css, js/booking-panel.js) ============ -->
-<!-- 파트너 목록(#partnerMainList, #partnerOther 안쪽)은 js/booking-panel.js가
-     config/site.config.js의 bookingPartners 값으로 채워 넣습니다. -->
+<!-- ============ BOOKING PANEL 컴포넌트 (index.html과 동일) ============ -->
 <div class="booking-overlay" id="bookingOverlay"></div>
 <aside class="booking-panel" id="bookingPanel" aria-hidden="true">
   <div class="sheet-handle"></div>
@@ -215,15 +245,17 @@
 <!-- ============ 설정 파일: 반드시 컴포넌트 스크립트보다 먼저 로드 ============ -->
 <script src="config/site.config.js"></script>
 
-<!-- ============ 컴포넌트 스크립트 ============ -->
-<script src="js/hero.js"></script>
+<!-- ============ 공통 컴포넌트 스크립트 (index.html과 동일) ============ -->
 <script src="js/header.js"></script>
 <script src="js/footer.js"></script>
 <script src="js/side-dock.js"></script>
 <script src="js/booking-panel.js"></script>
 
-<!-- ============ 진입점: 위 컴포넌트들의 init()을 호출 ============ -->
-<script src="js/main.js"></script>
+<!-- ============ 이 페이지 전용 스크립트 ============ -->
+<script src="js/experiences-page.js"></script>
+
+<!-- ============ 진입점: 공통 컴포넌트 + 이 페이지 컴포넌트 init() 호출 ============ -->
+<script src="js/experiences-page-main.js"></script>
 
 </body>
 </html>
