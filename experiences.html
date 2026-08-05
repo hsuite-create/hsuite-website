@@ -21,6 +21,11 @@
 
 <!-- 이 페이지 전용 CSS -->
 <link rel="stylesheet" href="css/experiences-page.css">
+
+<!-- config는 head에서 가장 먼저 불러옵니다. 아래 body 안쪽에 있는
+     인라인 스크립트가 이 값을 곧바로 쓰기 때문에, 반드시 그보다
+     앞서 로드되어 있어야 합니다. -->
+<script src="config/site.config.js"></script>
 </head>
 <body class="no-hero">
 
@@ -118,10 +123,43 @@
   <!-- 링크는 config/site.config.js 의 experiencesPage.outdoorLinks 에서 관리합니다 -->
   <section class="exp-outdoor exp-reveal" id="outdoor-section">
     <div class="exp-section-label">OUTDOOR</div>
-    <ul class="exp-outdoor-list" id="outdoorLinkList">
-      <!-- js/experiences-page.js가 config 값으로 채워 넣습니다 -->
-    </ul>
+    <ul class="exp-outdoor-list" id="outdoorLinkList"></ul>
   </section>
+
+  <!--
+    이 스크립트는 일부러 위 <ul id="outdoorLinkList"> 바로 뒤에 뒀습니다.
+    브라우저가 HTML을 위에서부터 순서대로 읽어 내려오다가 이 <script>를
+    만나는 시점에는, 바로 위의 <ul>이 이미 화면(DOM)에 존재하는 게
+    100% 보장됩니다. "DOMContentLoaded 이벤트를 기다렸다가 실행"하는
+    방식과 달리, 이벤트 발생 타이밍이 꼬여서 실행을 놓치는 경우가
+    구조적으로 있을 수 없기 때문에 가장 안전합니다.
+    config/site.config.js는 <head>에서 이미 불러왔기 때문에
+    SITE_CONFIG 값도 이 시점에 바로 사용할 수 있습니다.
+  -->
+  <script>
+    (function renderOutdoorLinksInline() {
+      var list = document.getElementById("outdoorLinkList");
+      var links =
+        (window.SITE_CONFIG &&
+          SITE_CONFIG.experiencesPage &&
+          SITE_CONFIG.experiencesPage.outdoorLinks) ||
+        [];
+
+      list.innerHTML = links
+        .map(function (link) {
+          var targetAttrs = link.external
+            ? 'target="_blank" rel="noopener noreferrer"'
+            : "";
+          return (
+            "<li><a href=\"" + link.url + "\" " + targetAttrs + ">" +
+            link.name +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>' +
+            "</a></li>"
+          );
+        })
+        .join("");
+    })();
+  </script>
 
 </main>
 
@@ -230,9 +268,6 @@
   머무실 준비가 되셨다면
   <span>Confirm your stay</span>
 </button>
-
-<!-- ============ 설정 파일: 반드시 컴포넌트 스크립트보다 먼저 로드 ============ -->
-<script src="config/site.config.js"></script>
 
 <!-- ============ 공통 컴포넌트 스크립트 (index.html과 동일) ============ -->
 <script src="js/header.js"></script>
