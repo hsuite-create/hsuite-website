@@ -13,35 +13,17 @@
  *     - .exp-reveal 클래스가 붙은 요소가 화면에 들어오면 서서히 떠오르며 나타납니다.
  *     - IntersectionObserver를 사용해서, 스크롤 이벤트를 직접 계산하지 않고
  *       가볍게 처리했습니다.
+ *
+ * 참고: OUTDOOR 링크 목록은 더 이상 여기서 그리지 않습니다.
+ * experiences.html 안, <ul id="outdoorLinkList"> 바로 뒤에 있는
+ * 인라인 <script>가 그 역할을 대신합니다 (이벤트 타이밍 문제를
+ * 원천적으로 피하기 위한 선택입니다. 자세한 이유는 그쪽 주석 참고).
  */
 
 const ExperiencesPageComponent = {
   init() {
-    this.renderOutdoorLinks();
     this.bindScrollTriggers();
     this.setupRevealAnimation();
-  },
-
-  /** OUTDOOR 섹션의 링크 목록을 config/site.config.js 값으로 채워 넣습니다 */
-  renderOutdoorLinks() {
-    const list = document.getElementById("outdoorLinkList");
-    if (!list || !window.SITE_CONFIG) return;
-
-    list.innerHTML = SITE_CONFIG.experiencesPage.outdoorLinks
-      .map((link) => {
-        // 외부 링크는 새 탭으로, 우리 사이트 내부 페이지는 같은 탭에서 이동합니다
-        const targetAttrs = link.external
-          ? `target="_blank" rel="noopener noreferrer"`
-          : "";
-        return `
-        <li>
-          <a href="${link.url}" ${targetAttrs}>
-            ${link.name}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
-          </a>
-        </li>`;
-      })
-      .join("");
   },
 
   /** data-scroll-to 속성이 붙은 모든 요소에 부드러운 스크롤 이동을 연결합니다 */
