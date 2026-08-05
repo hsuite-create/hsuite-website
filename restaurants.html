@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="css/booking-panel.css">
 <link rel="stylesheet" href="css/list-page.css">
 </head>
-<body>
+<body class="no-hero">
 
 <!-- ============ HEADER (공통) ============ -->
 <header id="siteHeader">
@@ -154,7 +154,14 @@
 <script src="js/booking-panel.js"></script>
 <script src="js/list-page.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  function runWhenReady(fn) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", fn);
+    } else {
+      fn();
+    }
+  }
+  runWhenReady(() => {
     HeaderComponent.init();
     FooterComponent.init();
     SideDockComponent.init();
