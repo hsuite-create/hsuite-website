@@ -1,0 +1,90 @@
+/*
+  brand-page.css
+  ------------------------------------------------------------
+  brand.html 전용 스타일입니다. 헤더/푸터/사이드독/예약패널은
+  기존 css 파일들을 그대로 재사용하고, 여기엔 이 페이지만의
+  섹션(인트로 / 풀쿼트 / 3분할 카드 / 클로징)만 담았습니다.
+
+  이 페이지도 rooms.html, experiences.html과 같은 이유로
+  config를 거치지 않고 내용을 HTML에 직접 써넣는 방식입니다.
+*/
+
+.brand-page{ padding-top:110px; }
+
+/* ── 1. 인트로 ── */
+.brand-intro{
+  padding:0 24px 56px;
+}
+.brand-intro .eyebrow{ display:block; margin-bottom:18px; text-align:right; }
+.brand-intro-body{
+  max-width:560px; margin:0 0 0 auto; text-align:right;
+}
+.brand-intro-body h1{
+  font-size:clamp(28px, 3.6vw, 42px); font-weight:400; line-height:1.35; color:var(--ink);
+  margin-bottom:22px;
+}
+.brand-intro-body p{
+  font-family:var(--font-kr); font-size:14.5px; line-height:1.85; color:rgba(57,49,32,.65);
+}
+
+/* ── 2. 풀 쿼트 ── */
+.brand-quote{
+  background:var(--sand); margin:0 24px 90px; padding:64px 24px;
+  text-align:center;
+}
+.brand-quote p{
+  font-family:var(--font-en-sub); font-size:clamp(19px, 2.4vw, 26px); line-height:1.6;
+  color:var(--ink); max-width:640px; margin:0 auto;
+}
+
+/* ── 3. 3분할 카드 ── */
+.brand-pillars{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:2px;
+  margin:0 24px 90px;
+}
+.brand-pillar{
+  background:var(--foam); border:1px solid var(--line); padding:32px 24px;
+}
+.brand-pillar svg{ width:22px; height:22px; color:var(--accent-mint); margin-bottom:16px; }
+.brand-pillar h3{
+  font-family:var(--font-kr); font-size:16px; font-weight:700; color:var(--ink); margin-bottom:10px;
+}
+.brand-pillar p{
+  font-family:var(--font-kr); font-size:13px; line-height:1.75; color:rgba(57,49,32,.6);
+}
+
+/* ── 4. 클로징 + Instagram ── */
+.brand-closing{
+  text-align:center; padding:60px 24px 120px; border-top:1px solid var(--line);
+  max-width:520px; margin:0 auto;
+}
+.brand-closing p{
+  font-family:var(--font-kr); font-size:14.5px; line-height:1.85; color:rgba(57,49,32,.7);
+  margin-bottom:28px;
+}
+.brand-instagram-btn{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-en-main); font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+  font-weight:700; color:var(--ink); border:1px solid var(--ink);
+  padding:13px 26px; border-radius:2px; transition:all .3s var(--ease);
+}
+.brand-instagram-btn svg{ width:16px; height:16px; }
+.brand-instagram-btn:hover{ background:var(--ink); color:var(--foam); }
+
+.brand-reveal{
+  opacity:0; transform:translateY(28px);
+  transition:opacity .8s var(--ease), transform .8s var(--ease);
+}
+.brand-reveal.is-visible{
+  opacity:1; transform:translateY(0);
+}
+
+@media (max-width:920px){
+  .brand-page{ padding-top:90px; }
+  .brand-intro{ padding:0 24px 40px; }
+  .brand-intro .eyebrow{ text-align:left; }
+  .brand-intro-body{ text-align:left; margin:0; }
+  .brand-quote{ margin:0 16px 60px; padding:44px 20px; }
+  .brand-pillars{ grid-template-columns:1fr; margin:0 16px 60px; }
+  .brand-closing{ padding:44px 24px 90px; }
+}
