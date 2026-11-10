@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 투숙객 전용 페이지: 검색엔진에 노출되지 않도록 noindex 지정 -->
+<meta name="robots" content="noindex,nofollow">
+<title>Beyond Your Stay — H Suite Guest Guide</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-kopub@1.0/kopubdotum.min.css">
+<link rel="stylesheet" href="https://use.typekit.net/kpk5ofh.css">
+
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/guest-page.css">
+<script src="/config/guest.config.js"></script>
+</head>
+<body>
+
+<!-- 상단 바: 로고 + 언어 전환 (예약 버튼/메뉴 없음) -->
+<div class="guest-top">
+  <img src="/assets/logo-ink.png" alt="H Suite">
+  <div class="guest-lang">
+    <button type="button" data-lang="ko">KO</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+</div>
+
+<main class="guest-wrap">
+  <header class="guest-hero" id="guestHero"></header>
+  <nav class="guest-nav" id="guestNav"></nav>
+  <div id="guestSections"></div>
+  <noscript><p>이 페이지는 JavaScript가 필요합니다. / This page requires JavaScript.</p></noscript>
+</main>
+
+<footer class="guest-foot" id="guestFooter"></footer>
+
+<script src="/js/guest-page.js"></script>
+<script src="/js/guest-page-main.js"></script>
+</body>
+</html>
