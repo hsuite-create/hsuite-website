@@ -1,0 +1,65 @@
+/*
+  guest-page.css
+  ------------------------------------------------------------
+  투숙객 전용 가이드(guest.html) 전용 스타일입니다.
+  색상/폰트는 base.css의 변수를 그대로 사용합니다.
+  모바일(폰) 화면을 가장 먼저 고려해서 만들었고, 640px 이상에서 여유를 넓힙니다.
+*/
+
+.guest-top{
+  position:sticky; top:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 20px; background:rgba(255,250,240,.94);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
+}
+.guest-top img{ height:18px; width:auto; min-width:0; }
+.guest-lang{ display:flex; gap:4px; font-family:var(--font-en-main); font-size:12px; letter-spacing:.12em; }
+.guest-lang button{ padding:6px 10px; color:rgba(57,49,32,.5); font-weight:700; }
+.guest-lang button.active{ color:var(--accent-mint); }
+
+.guest-wrap{ max-width:760px; margin:0 auto; padding:0 20px 80px; }
+
+/* 상단 소개 */
+.guest-hero{ padding:56px 0 28px; }
+.guest-title{ font-family:var(--font-en-main); font-weight:700; font-size:clamp(34px,8vw,56px); letter-spacing:.02em; margin-bottom:14px; }
+.guest-lead{ font-size:clamp(17px,3.4vw,22px); line-height:1.5; margin-bottom:12px; }
+.guest-desc{ font-size:14px; line-height:1.8; color:rgba(57,49,32,.65); margin-bottom:18px; }
+.guest-insta{ font-family:var(--font-en-main); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-mint); font-weight:700; }
+
+/* 섹션 바로가기 */
+.guest-nav{ display:flex; flex-wrap:wrap; gap:8px; padding:8px 0 20px; }
+.guest-nav a{ padding:8px 14px; border:1px solid var(--line); border-radius:999px; font-size:13px; }
+
+/* 섹션 */
+.guest-section{ padding:44px 0 8px; scroll-margin-top:70px; border-top:1px solid var(--line); margin-top:20px; }
+.guest-sec-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:16px; }
+.guest-sec-head h2{ font-size:clamp(22px,4.5vw,28px); font-weight:400; }
+.guest-intro{ font-size:13.5px; line-height:1.8; color:rgba(57,49,32,.65); margin-bottom:14px; }
+
+/* 필터 칩 */
+.guest-filters{ display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+.guest-chip{ padding:8px 14px; border:1px solid var(--line); border-radius:999px; font-size:13px; color:var(--ink); }
+.guest-chip.active{ background:var(--accent-mint); border-color:var(--accent-mint); color:#fff; }
+
+/* 장소 카드 */
+.guest-list{ display:grid; gap:14px; }
+.guest-card{ background:var(--sand); padding:20px 20px 18px; }
+.guest-card[hidden]{ display:none; }
+.guest-card h3{ font-size:17px; font-weight:700; margin-bottom:10px; }
+.guest-why-label{ font-family:var(--font-en-main); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent-mint); font-weight:700; margin-bottom:4px; }
+.guest-why{ font-size:14px; line-height:1.8; color:rgba(57,49,32,.78); }
+.guest-map{ display:inline-block; margin-top:12px; font-size:13px; color:var(--ink); border-bottom:1px solid var(--accent-mint); }
+
+/* 투숙 안내 */
+.guest-info{ background:var(--sand); }
+.guest-info-row{ display:flex; gap:16px; padding:16px 20px; border-bottom:1px solid var(--line); }
+.guest-info-row:last-child{ border-bottom:none; }
+.guest-info dt{ flex:0 0 110px; font-weight:700; font-size:14px; }
+.guest-info dd{ font-size:14px; line-height:1.7; }
+
+.guest-foot{ text-align:center; font-size:12px; color:rgba(57,49,32,.5); padding:40px 20px 50px; }
+
+@media (min-width:640px){
+  .guest-list{ grid-template-columns:1fr 1fr; }
+  .guest-wrap{ padding:0 32px 100px; }
+}
